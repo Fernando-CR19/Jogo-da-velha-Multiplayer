@@ -11,6 +11,7 @@ export const Login = (setIsAuth) => {
     const login = () => {
         Axios.post("http://localhost:5000/login", { username, password, }).then((res) => {
             const { firstName, lastName, username, token, userId } = res.data;
+
             cookies.set("token", token);
             cookies.set("userId", userId);
             cookies.set("username", username);
