@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Board } from "./Board";
 
 export const Game = ({ channel }) => {
 
@@ -8,6 +9,8 @@ export const Game = ({ channel }) => {
         setPlayersJoined(e.watcher_count === 2)
     });
 
+    const [result, setResult] = useState({ winner: "none", state: "none" });
+
     if (!playersJoined) {
         return (
             <div> Waiting for other player to join... </div>
@@ -15,6 +18,10 @@ export const Game = ({ channel }) => {
     };
 
     return (
-        <div>Game</div>
+        <div>
+            <Board result={result} setResult={setResult} />
+            {/* CHAT */}
+            {/* Leave Game Button */}
+        </div>
     )
 }
