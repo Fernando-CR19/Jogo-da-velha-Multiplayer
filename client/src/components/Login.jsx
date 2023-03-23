@@ -2,7 +2,7 @@ import { useState } from "react"
 import Axios from "axios";
 import Cookies from "universal-cookie";
 
-export const Login = (setIsAuth) => {
+export const Login = ({ setIsAuth }) => {
 
     const [username, setUsername] = useState(null)
     const [password, setPassword] = useState(null)

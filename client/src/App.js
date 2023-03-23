@@ -17,18 +17,6 @@ function App() {
   const client = StreamChat.getInstance(API_KEY);
   const [isAuth, setIsAuth] = useState(false)
 
-  const logOut = () => {
-    cookies.remove("token");
-    cookies.remove("userId");
-    cookies.remove("firstName");
-    cookies.remove("lastName");
-    cookies.remove("hashedPassword");
-    cookies.remove("channelName");
-    cookies.remove("username");
-    client.disconnectUser();
-    setIsAuth(false)
-  }
-
   if (token) {
     client
       .connectUser(
@@ -49,7 +37,7 @@ function App() {
   return (
     <div className="App">
       {isAuth ? (
-        <Chat client={client}> <JoinGame /> <button onClick={logOut}>Log Out</button> </Chat>
+        <Chat client={client}> <JoinGame setIsAuth={setIsAuth}/> </Chat>
       ) : (<> <SignUp setIsAuth={setIsAuth} /> <Login setIsAuth={setIsAuth} /> </>)}
     </div>
   );
